@@ -179,12 +179,10 @@ LDnClustering <- function(snp, map, nSNPs=1000, w1=10, w2=100 ,LD_threshold1 = 0
     ## find hotspots and windows
     nWindows <- as.integer(nL/nSNPs)
     
-    
-    if (nWindows > 1) {
-      temp <- which(slideFunct(LDmat[1, ], w1) < LD_threshold1)
-      
+     temp <- which(slideFunct(LDmat[1, ], w1) < LD_threshold1)
+     
+    if (nWindows > 1 &length(temp)>=1) {
       hotspots <- sapply(seq(1, nL, length.out = nWindows + 1), function(i) {which.min(abs(i - temp))})
-      
       hotspots <- temp[hotspots]
       hotspots[length(hotspots)] <- nL
       hotspots[1] <- 0
