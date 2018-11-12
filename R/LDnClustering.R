@@ -206,7 +206,7 @@ LDnClustering <- function(snp, map, nSNPs=1000, w1=10, w2=100 ,LD_threshold1 = 0
       
       Window <- Windows[[w]]
       snp.id.bin <- snp.id[which(snp.id%in%Window)]
-      snp_bin  <- snp[,which(snp.id%in%Window)]
+      snp_bin  <- as.matrix(snp[,which(snp.id%in%Window)])
       
       
       SNPRelate::snpgdsCreateGeno(paste0(w,gds_name), genmat = snp_bin, sample.id = 1: nrow(snp) , snp.id = snp.id.bin, snpfirstdim=FALSE) ### sample ID should be 1: how many individuals you have
